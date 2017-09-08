@@ -1,2 +1,2 @@
-# e2-left-app
-Mini social network for housemates
+# auth-graphql-starter
+Starter project from a GraphQL course on Udemy.com - Section 3!
