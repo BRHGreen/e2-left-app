@@ -7,14 +7,27 @@ BigCalendar.setLocalizer(
   BigCalendar.momentLocalizer(moment)
 );
 
+let allViews = Object.keys(BigCalendar.views).map(k => BigCalendar.views[k])
+
+const events = [
+  {
+  'title': 'All Day Event',
+  'allDay': true,
+  'start': new Date(2017, 8, 0),
+  'end': new Date(2017, 8, 1)
+}
+]
+
 class Dashboard extends Component {
   render () {
+    console.log('this.props: ', this.props);
     return (
       <div>
         <BigCalendar
-          events={['things', 'other things', 'thiingsss']}
-          startAccessor='startDate'
-          endAccessor='endDate'
+          {...this.props}
+        events={events}
+        views={allViews}
+        defaultDate={new Date(2017, 8, 1)}
         />
       </div>
     )
