@@ -13,9 +13,7 @@ const app = express();
 
 // Replace with your mongoLab URI
 // process.env.<name of key>
-/*
-*******The process env's might break everything. Check different syntaxes using template strings, and that you have got your un/pw correct. Otherwise you'll just have to hard code it and not do a commit. If you can't get it to work then email the course instructor. Putting your password in here seems to be VERY bad practice*********
-*/
+
 const MONGO_URI = 'mongodb://'+process.env.AUTH_GRAPHQL_USERNAME+':'+process.env.AUTH_GRAPHQL_PW+'@ds125774.mlab.com:25774/authgraphql';
 
 // Mongoose's built in promise library is deprecated, replace it with ES2015 Promise

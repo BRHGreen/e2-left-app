@@ -30,7 +30,7 @@ class Header extends Component {
             <Link to='/login'>Login</Link>
           </li>
           <li>
-            <Link className='blah' to='/'>Blah</Link>
+            <Link className='blah' to='/'>Blob</Link>
           </li>
         </div>
       )
