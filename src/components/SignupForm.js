@@ -5,7 +5,6 @@ import { graphql } from 'react-apollo'
 import query from '../queries/CurrentUser'
 import { hashHistory } from 'react-router'
 
-
 class SignupForm extends Component {
 
   constructor(props) {
@@ -14,7 +13,6 @@ class SignupForm extends Component {
   }
 
   componentWillUpdate (nextProps) {
-    console.log(this.props, nextProps);
     if (!this.props.data.user && nextProps.data.user) {
         hashHistory.push('/dashboard')
     }

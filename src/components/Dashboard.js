@@ -1,9 +1,24 @@
-import React from 'react'
+import React, { Component } from 'react'
+import BigCalendar from 'react-big-calendar';
+import moment from 'moment';
+import 'react-big-calendar/lib/css/react-big-calendar.css'
 
-export default () => {
-  return (
-    <div>
-      you are logged in
-    </div>
-  )
+BigCalendar.setLocalizer(
+  BigCalendar.momentLocalizer(moment)
+);
+
+class Dashboard extends Component {
+  render () {
+    return (
+      <div>
+        <BigCalendar
+          events={['things', 'other things', 'thiingsss']}
+          startAccessor='startDate'
+          endAccessor='endDate'
+        />
+      </div>
+    )
+  }
 }
+
+export default Dashboard

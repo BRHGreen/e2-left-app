@@ -6,12 +6,22 @@ The MONGO_URI in server.js makes use of environment variables which you will nee
 most of the docs used for webpack.config found [here](https://www.jonathan-petitcolas.com/2015/05/15/howto-setup-webpack-on-es6-react-application-with-sass.html)
 
 handy commands:
-// Todo
-// figure out a less verbose way of running this stuff
-// implement ExtractTextPlugin to create separate stylesheet
+
+run with nondemon (currently the only way this will work with gql): npm run dev
+
+**Todo - features**
+Features flowchart can be found [here](https://www.draw.io/#G0B_hu5vhPMf3gVUpPaE9pa3d1T1k)
+- create username and confirm password fields in signup
+- put calendar on dashboard. Maybe [this](https://tympanus.net/Development/Calendario/)
+- 
+
+**Todo - environment**
+- get webpack server working with gql
+- figure out a less verbose way of running this stuff webpack server
+- implement ExtractTextPlugin to create separate stylesheet
 
 run the webpack server with hot reload:
-	 ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --progress --colors
+./webpack-dev-server/bin/webpack-dev-server.js --progress --colors
 
 
 transpile to public/main.js:
