@@ -1,17 +1,18 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-function getEntrySources(sources) {
-    if (process.env.NODE_ENV !== 'production') {
-        sources.push('webpack-dev-server/client?http://localhost:8080');
-    }
-    return sources;
-}
+// function getEntrySources(sources) {
+//     if (process.env.NODE_ENV !== 'production') {
+//         sources.push('webpack-dev-server/client?http://localhost:8080');
+//     }
+//     return sources;
+// }
 
 module.exports = {
-  entry: getEntrySources(['./src/index.js']),
+  entry: './src/index.js',
   output: {
-    filename: 'public/[name].js'
+    path: '/',
+    filename: 'public/main.js'
   },
   module: {
     rules: [
@@ -19,7 +20,7 @@ module.exports = {
         use: 'babel-loader',
         test: /\.js$/,
         exclude: /node_modules/
-      },
+      }, 
       {
         test: /\.scss$/,
         loaders: ['style-loader', 'css-loader', 'sass-loader']
