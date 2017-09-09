@@ -1,8 +1,15 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+function getEntrySources(sources) {
+    if (process.env.NODE_ENV !== 'production') {
+        sources.push('webpack-dev-server/client?http://localhost:8080');
+    }
+    return sources;
+}
+
 module.exports = {
-  entry: './src/index.js',
+  entry: getEntrySources(['./src/index.js']),
   output: {
     filename: 'public/[name].js'
   },
