@@ -3,7 +3,7 @@ import { graphql } from 'react-apollo'
 import query from '../queries/CurrentUser'
 import { Link } from 'react-router'
 import mutation from '../mutations/Logout'
-import '../styles/styles.css'
+import '../styles/styles.scss'
 
 class Header extends Component {
   onLogoutClick () {
