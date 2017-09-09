@@ -8,8 +8,8 @@ most of the docs used for webpack.config found [here](https://www.jonathan-petit
 handy commands:
 // Todo
 // figure out a less verbose way of running this stuff
+// implement ExtractTextPlugin to create separate stylesheet
 
-//
 run the webpack server with hot reload:
 	 ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --progress --colors
 
