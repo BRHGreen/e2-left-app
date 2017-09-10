@@ -17,7 +17,14 @@ class Header extends Component {
     if (this.props.data.loading) { return <div /> }
     if (user) {
       return (
-        <li><a onClick={this.onLogoutClick.bind(this)}>Logout</a></li>
+        <div>
+          <li>
+            <a onClick={this.onLogoutClick.bind(this)}>Logout</a>
+          </li>
+          <li>
+            <Link className='user-profile' to='/user-profile'>My Profile</Link>
+          </li>
+        </div>
       )
     } else {
       return (
@@ -27,9 +34,6 @@ class Header extends Component {
           </li>
           <li>
             <Link to='/login'>Login</Link>
-          </li>
-          <li>
-            <Link className='blah' to='/'>Bloby blahdy bloo</Link>
           </li>
         </div>
       )

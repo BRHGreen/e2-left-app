@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom'
 import ApolloClient, { createNetworkInterface } from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
 import { Router, hashHistory, Route, Index } from 'react-router'
-import App from './components/App'
-import LoginForm from './components/LoginForm'
-import SignupForm from './components/SignupForm'
-import Dashboard from './components/Dashboard'
-import requireAuth from './components/requireAuth'
+import App from './main/App'
+import LoginForm from './auth/LoginForm'
+import SignupForm from './auth/SignupForm'
+import requireAuth from './auth/requireAuth'
+import Dashboard from './main/Dashboard'
+import UserProfile from './sections/UserProfile'
 
 
 const networkInterface =createNetworkInterface({
@@ -30,6 +31,7 @@ const Root = () => {
           <Route path='login' component={LoginForm} />
           <Route path='signup' component={SignupForm} />
           <Route path='dashboard' component={requireAuth(Dashboard)} />
+          <Route path='user-profile' component={requireAuth(UserProfile)} />
         </Route>
       </Router>
     </ApolloProvider>
