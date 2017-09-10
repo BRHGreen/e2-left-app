@@ -9,13 +9,16 @@ BigCalendar.setLocalizer(
 
 let allViews = Object.keys(BigCalendar.views).map(k => BigCalendar.views[k])
 
+/*
+JS dates: The month is zero indexed the day is not. Default order is YY/MM/DD
+*/
 const events = [
   {
   'title': 'All Day Event',
   'allDay': true,
-  'start': new Date(2017, 8, 0),
-  'end': new Date(2017, 8, 1)
-}
+  'start': new Date(2017, 9, 5),
+  'end': new Date(2017, 9, 5)
+  }
 ]
 
 class Dashboard extends Component {
@@ -25,9 +28,7 @@ class Dashboard extends Component {
       <div>
         <BigCalendar
           {...this.props}
-        events={events}
-        views={allViews}
-        defaultDate={new Date(2017, 8, 1)}
+          events={events}
         />
       </div>
     )

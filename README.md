@@ -9,17 +9,8 @@ handy commands:
 
 run with nondemon (currently the only way this will work with gql): npm run dev
 
-**Todo - features**
-Features flowchart can be found [here](https://www.draw.io/#G0B_hu5vhPMf3gVUpPaE9pa3d1T1k)
-- create username and confirm password fields in signup
-- put calendar on dashboard. Maybe [this](https://tympanus.net/Development/Calendario/)
-- 
 
-**Todo - environment**
-- get webpack server working with gql
-- figure out a less verbose way of running this stuff webpack server
-- implement ExtractTextPlugin to create separate stylesheet
-
+**not working yet**
 run the webpack server with hot reload:
 ./webpack-dev-server/bin/webpack-dev-server.js --progress --colors
 
