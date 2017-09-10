@@ -18,7 +18,7 @@ class SignupForm extends Component {
     }
   }
 
-  onSubmit ({ email, password }) {
+  onSubmit ({ firstName, lastName, email, password }) {
     this.props.mutate({
       variables: { email, password },
       refetchQueries: [{ query }]
