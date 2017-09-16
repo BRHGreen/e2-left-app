@@ -23,7 +23,7 @@ const client = new ApolloClient({
   dataIdFromObject: o => o.id
 })
 
-const Root = () => {
+const Root = (props) => {
   return (
     <ApolloProvider client={client}>
       <Router history={hashHistory}>

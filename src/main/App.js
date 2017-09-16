@@ -3,6 +3,7 @@ import Header from './Header'
 
 const App = (props) => {
   return (
+    console.log('App props: ', props),
     <div>
       <Header />
       <div className='container'>

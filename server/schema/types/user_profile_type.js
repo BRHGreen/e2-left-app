@@ -15,7 +15,7 @@ const UserProfileType = new GraphQLObjectType({
     age: {
       type: GraphQLInt
     },
-    ocupation: {
+    occupation: {
       type: GraphQLString
     },
     loveMeForever: {

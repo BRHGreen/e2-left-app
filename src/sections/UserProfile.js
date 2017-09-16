@@ -5,7 +5,7 @@ class UserProfile extends Component {
     const { user, loading } = this.props.data
     console.log('user props: ', this.props);
     if (!this.props.data.loading) {
-      console.log('user props data: ', this.props.data.user.firstName);
+      // console.log('user props data: ', this.props.data.user.firstName);
     }
     return (
       <div>
