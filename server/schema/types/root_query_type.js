@@ -1,6 +1,8 @@
+const mongoose = require('mongoose');
 const graphql = require('graphql');
 const UserType = require('./user_type')
 const UserProfileType = require('./user_profile_type')
+const UserProfile = mongoose.model('userProfile');
 const {
    GraphQLObjectType,
    GraphQLID,
@@ -20,7 +22,7 @@ const RootQueryType = new GraphQLObjectType({
       type: UserProfileType,
       args: { id: { type: new GraphQLNonNull(GraphQLID) } },
       resolve(parentValue, { id }) {
-        return UserProfileType.findById(id)
+        return UserProfile.findById(id)
       }
     }
   })
