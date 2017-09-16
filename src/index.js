@@ -9,6 +9,7 @@ import SignupForm from './auth/SignupForm'
 import requireAuth from './auth/requireAuth'
 import Dashboard from './main/Dashboard'
 import UserProfile from './sections/UserProfile'
+import UserProfileEdit from './sections/UserProfileEdit'
 
 
 const networkInterface =createNetworkInterface({
@@ -32,6 +33,7 @@ const Root = (props) => {
           <Route path='signup' component={SignupForm} />
           <Route path='dashboard' component={requireAuth(Dashboard)} />
           <Route path='user-profile' component={requireAuth(UserProfile)} />
+          <Route path='user-profile-edit' component={requireAuth(UserProfileEdit)} />
         </Route>
       </Router>
     </ApolloProvider>

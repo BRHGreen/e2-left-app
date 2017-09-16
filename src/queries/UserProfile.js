@@ -1,10 +1,10 @@
 import gql from 'graphql-tag'
 
 export default gql`
-  {
-    userProfile {
-      id
-      age
-    }
+query fetchUserProfile($id: ID!) {
+  userProfile(id: $id) {
+    id
+    age
   }
+}
 `
