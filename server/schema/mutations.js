@@ -1,10 +1,14 @@
+const mongoose = require('mongoose');
 const graphql = require('graphql')
+const UserType = require('./types/user_type')
+const UserProfileType = require('./types/user_profile_type')
+const AuthService = require('../services/auth')
+const UserProfile = mongoose.model('userProfile');
 const {
   GraphQLObjectType,
-  GraphQLString
+  GraphQLString,
+  GraphQLInt
 } = graphql;
-const UserType = require('./types/user_type')
-const AuthService = require('../services/auth')
 
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
@@ -37,6 +41,17 @@ const mutation = new GraphQLObjectType({
       },
       resolve(parentValue, { email, password }, req) {
         return AuthService.login({ email, password, req })
+      }
+    },
+    updateProfile: {
+      type: UserProfileType,
+      args: {
+        age: { type: GraphQLInt },
+        occupation: { type: GraphQLString },
+        loveMeForever: { type: GraphQLString }
+      },
+      resolve(parentValue, args) {
+        return (new UserProfile(args)).save()
       }
     }
   }
