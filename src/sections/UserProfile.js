@@ -8,6 +8,7 @@ class UserProfile extends Component {
   onProfileDelete (id) {
     console.log('id:', id);
     this.props.mutate({ variables: { id } })
+    // you should use the `.then...refetch` method as opposed to `refetchQueries: [{ query }]` function when it is asociated with another component. (at the time of writing you didn't really get this, porbs look it up.) It's something to do with whether or not the query comes in as a prop. It's covered in lecture 53 of react with gql. Using refetch on .then will work on anything though. If in doubt, use this method.
       .then(() => this.props.data.refetch())
   }
 

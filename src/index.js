@@ -33,7 +33,7 @@ const Root = (props) => {
           <Route path='signup' component={SignupForm} />
           <Route path='dashboard' component={requireAuth(Dashboard)} />
           <Route path='user-profile' component={requireAuth(UserProfile)} />
-          <Route path='user-profile-edit' component={requireAuth(UserProfileEdit)} />
+          <Route path='user-profile/:id' component={requireAuth(UserProfileEdit)} />
         </Route>
       </Router>
     </ApolloProvider>
