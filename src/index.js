@@ -25,6 +25,7 @@ const client = new ApolloClient({
 })
 
 const Root = (props) => {
+  console.log('index props: ', props);
   return (
     <ApolloProvider client={client}>
       <Router history={hashHistory}>

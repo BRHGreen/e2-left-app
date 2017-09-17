@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { Link, hashHistory } from 'react-router'
-import query from '../queries/UserProfile'
+import query from '../queries/fetchUserProfile'
 
 class UserProfileEdit extends Component {
   constructor(props) {

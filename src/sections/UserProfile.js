@@ -1,20 +1,16 @@
 import React, { Component } from 'react'
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
-import fetchUserProfile from '../queries/UserProfile'
+import  query from '../queries/fetchUserProfile'
 
 class UserProfile extends Component {
 
-  constructor(props) {
-    super(props)
-  }
-
   render () {
     const { user, loading } = this.props.data
-    console.log('user props: ', this.props);
+    console.log('user profile: ', this.props);
     return (
       <div>
-        {!loading &&
+        {user &&
           <p>Hello {user.firstName}</p>
         }
       </div>
@@ -29,4 +25,5 @@ class UserProfile extends Component {
 
 // export default graphql(mutation)(UserProfile)
 
-export default UserProfile
+export default graphql(query)(UserProfile)
+// export default UserProfile
