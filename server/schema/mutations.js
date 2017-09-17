@@ -7,7 +7,8 @@ const UserProfile = mongoose.model('userProfile');
 const {
   GraphQLObjectType,
   GraphQLString,
-  GraphQLInt
+  GraphQLInt,
+  GraphQLID
 } = graphql;
 
 const mutation = new GraphQLObjectType({
@@ -52,6 +53,13 @@ const mutation = new GraphQLObjectType({
       },
       resolve(parentValue, args) {
         return (new UserProfile(args)).save()
+      }
+    },
+    deleteUserProfile: {
+      type: UserProfileType,
+      args: { id: { type: GraphQLID } },
+      resolve(parentValue, { id }) {
+        return UserProfile.remove({ _id: id });
       }
     }
   }

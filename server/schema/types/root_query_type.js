@@ -27,9 +27,8 @@ const RootQueryType = new GraphQLObjectType({
     },
     userProfile: {
       type: UserProfileType,
-      args: { id: { type: GraphQLID } },
       resolve(parentValue, { id }) {
-        return UserProfile.findById(id)
+        return UserProfile.find({})
       }
     }
   })

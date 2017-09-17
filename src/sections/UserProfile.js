@@ -1,16 +1,27 @@
 import React, { Component } from 'react'
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
-// import  query from '../queries/fetchUserProfile'
+import  fetchUserProfileQuery from '../queries/fetchUserProfile'
 
 class UserProfile extends Component {
 
+  onProfileDelete (id) {
+    console.log('id:', id);
+    this.props.mutate({ variables: { id } })
+      .then(() => this.props.data.refetch())
+  }
+
   renderProfiles () {
-    return this.props.data.userProfiles.map(({ age }, i) => {
+    return this.props.data.userProfiles.map(({ id, age }, i) => {
+      console.log('profile props: ', this.props);
       return (
         <li
           key={i}>
           age: {age}
+          <i
+            className='material-icons'
+            onClick={() => this.onProfileDelete(id)}
+            >delete</i>
         </li>
       )
     })
@@ -18,7 +29,6 @@ class UserProfile extends Component {
 
   render () {
     const { user, loading } = this.props.data
-    console.log('user props: ', this.props);
     return (
       <div>
         {!loading &&
@@ -36,21 +46,15 @@ class UserProfile extends Component {
   }
 }
 
-// any query you define will be automatically invoked when the component renders
-// The data returned from the query is accessable through the props obj
-const query = gql`
-{
-  user {
+const mutation = gql`
+ mutation DeleteUserProfile ($id: ID) {
+  deleteUserProfile(id: $id) {
     id
-    firstName
-    lastName
-    email
-  }
-  userProfiles {
     age
   }
 }
 `
 
-export default graphql(query)(UserProfile)
-// export default UserProfile
+export default graphql(mutation)(
+  graphql(fetchUserProfileQuery)(UserProfile)
+)

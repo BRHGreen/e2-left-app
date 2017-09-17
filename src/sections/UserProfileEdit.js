@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { Link, hashHistory } from 'react-router'
-import query from '../queries/fetchUserProfile'
+import fetchUserProfileQuery from '../queries/fetchUserProfile'
 
 class UserProfileEdit extends Component {
   constructor(props) {
@@ -15,7 +15,9 @@ class UserProfileEdit extends Component {
   onSubmit(event) {
     event.preventDefault()
     this.props.mutate({
-      variables: { age: this.state.age }
+      variables: { age: this.state.age },
+      // refetch takes 2 args: the query you want to re-run and the variables. You don't always have to pass in vars, in this case it's not necessary.
+      refetchQueries: [{ query: fetchUserProfileQuery }]
     }).then(() => hashHistory.push('/user-profile'))
   }
 

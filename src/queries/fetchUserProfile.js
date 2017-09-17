@@ -2,7 +2,13 @@ import gql from 'graphql-tag'
 
 export default gql`
 {
-  userProfile {
+  user {
+    id
+    firstName
+    lastName
+    email
+  }
+  userProfiles {
     id
     age
   }

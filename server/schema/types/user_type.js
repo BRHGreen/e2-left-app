@@ -1,3 +1,4 @@
+const UserProfileType = require ('./user_profile_type')
 const graphql = require('graphql');
 const {
   GraphQLObjectType,
@@ -19,6 +20,12 @@ const UserType = new GraphQLObjectType({
     },
     email: {
       type: GraphQLString
+    },
+    userProfile: {
+      type: UserProfileType,
+        resolve(parentValue) {
+          console.log('word')
+        }
     }
   })
 })
