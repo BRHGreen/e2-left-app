@@ -40,6 +40,12 @@ class UserProfile extends Component {
 // The data returned from the query is accessable through the props obj
 const query = gql`
 {
+  user {
+    id
+    firstName
+    lastName
+    email
+  }
   userProfiles {
     age
   }
