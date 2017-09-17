@@ -8,7 +8,7 @@ const {
 
 const UserProfileType = new GraphQLObjectType({
   name: 'UserProfileType',
-  fields: {
+  fields: () => ({
     id: {
       type: GraphQLID
     },
@@ -21,6 +21,6 @@ const UserProfileType = new GraphQLObjectType({
     loveMeForever: {
       type: GraphQLString
     }
-  }
+  })
 })
 module.exports = UserProfileType;

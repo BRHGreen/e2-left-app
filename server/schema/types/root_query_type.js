@@ -6,7 +6,8 @@ const UserProfile = mongoose.model('userProfile');
 const {
    GraphQLObjectType,
    GraphQLID,
-   GraphQLNonNull
+   GraphQLNonNull,
+   GraphQLList
  } = graphql;
 
 const RootQueryType = new GraphQLObjectType({
@@ -16,6 +17,12 @@ const RootQueryType = new GraphQLObjectType({
       type: UserType,
       resolve(parentValue, args, req) {
         return req.user
+      }
+    },
+    userProfiles: {
+      type: new GraphQLList(UserProfileType),
+      resolve(parentValue, { id }) {
+        return UserProfile.find({})
       }
     },
     userProfile: {

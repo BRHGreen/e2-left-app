@@ -1,29 +1,50 @@
 import React, { Component } from 'react'
 import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
-import  query from '../queries/fetchUserProfile'
+// import  query from '../queries/fetchUserProfile'
 
 class UserProfile extends Component {
 
+  renderProfiles () {
+    return this.props.data.userProfiles.map(({ age }, i) => {
+      return (
+        <li
+          key={i}>
+          age: {age}
+        </li>
+      )
+    })
+  }
+
   render () {
     const { user, loading } = this.props.data
-    console.log('user profile: ', this.props);
+    console.log('user props: ', this.props);
     return (
       <div>
-        {user &&
-          <p>Hello {user.firstName}</p>
+        {!loading &&
+        <div>
+          {user &&
+            <p>Hello {user.firstName}</p>
+          }
+          <ul>
+            {this.renderProfiles()}
+          </ul>
+        </div>
         }
       </div>
     )
   }
 }
 
-// export default graphql(fetchUserProfile,
-//   options: (props) => { return {variables: } id: }
-// )
-// )
-
-// export default graphql(mutation)(UserProfile)
+// any query you define will be automatically invoked when the component renders
+// The data returned from the query is accessable through the props obj
+const query = gql`
+{
+  userProfiles {
+    age
+  }
+}
+`
 
 export default graphql(query)(UserProfile)
 // export default UserProfile

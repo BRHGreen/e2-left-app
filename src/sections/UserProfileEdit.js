@@ -15,14 +15,13 @@ class UserProfileEdit extends Component {
   onSubmit(event) {
     event.preventDefault()
     this.props.mutate({
-      variables: { age: this.state.age },
-      refetchQueries: [{ query }]
+      variables: { age: this.state.age }
     }).then(() => hashHistory.push('/user-profile'))
   }
 
   render () {
     const { user, loading } = this.props.data
-    console.log('user props: ', this.props);
+    console.log('user edit props: ', this.props);
     return (
       <div>
         {!loading &&
@@ -40,8 +39,9 @@ class UserProfileEdit extends Component {
   }
 }
 
+// while queries put the data they fetch into the props object, turn up on `this.props.mutate`
 const mutation = gql `
-  mutation updateProfile($age: Int){
+  mutation UpdateProfile($age: Int){
     updateProfile(age: $age) {
       age
     }
