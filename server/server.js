@@ -15,8 +15,6 @@ const app = express();
 // process.env.<name of key>
 const MONGO_URI =
 'mongodb://'+process.env.E2_LEFET_APP_USERNAME+':'+process.env.E2_LEFET_APP_PW+'@ds141284.mlab.com:41284/e2leftapp'
- // 'mongodb://'+process.env.E2_LEFET_APP_USERNAME+':'+process.env.E2_LEFET_APP_PW+'@ds125774.mlab.com:41284/e2leftapp';
-// const MONGO_URI = 'mongodb://'+process.env.AUTH_GRAPHQL_USERNAME+':'+process.env.AUTH_GRAPHQL_PW+'@ds125774.mlab.com:25774/authgraphql';
 
 // Mongoose's built in promise library is deprecated, replace it with ES2015 Promise
 mongoose.Promise = global.Promise;
