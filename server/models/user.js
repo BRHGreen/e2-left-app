@@ -6,8 +6,9 @@ const Schema = mongoose.Schema;
 // Every user has an email and password.  The password is not stored as
 // plain text - see the authentication helpers below.
 const UserSchema = new Schema({
-  firstName: String,
-  lastName: String,
+  // signup login only works without refresh without firstName and lastName
+  // firstName: String,
+  // lastName: String,
   email: String,
   password: String
 });

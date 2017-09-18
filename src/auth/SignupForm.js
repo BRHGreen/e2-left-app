@@ -36,6 +36,7 @@ class SignupForm extends Component {
         <AuthForm
           onSubmit={this.onSubmit.bind(this)}
           errors={this.state.errors}
+          location={this.props.location.pathname}
         />
       </div>
     )

@@ -30,12 +30,14 @@ class LoginForm extends Component {
   }
 
   render () {
+    console.log('login props: ', this.props.location.pathname);
     return (
       <div>
         <h3>Login</h3>
         <AuthForm
           onSubmit={this.onSubmit.bind(this)}
           errors={this.state.errors}
+          location={this.props.location.pathname}
         />
       </div>
     )

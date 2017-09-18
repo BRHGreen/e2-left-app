@@ -9,7 +9,8 @@ constructor(props) {
     firstName: '',
     lastName: '',
     email: '',
-    password: ''}
+    password: ''
+  }
 }
 
 onSubmit (event) {
@@ -19,23 +20,28 @@ onSubmit (event) {
 }
 
   render () {
+    const { location } = this.props
     return (
       <div className='row'>
         <form onSubmit={this.onSubmit.bind(this)} className='col s4'>
-          <div className='inputfield'>
-            <input
-              placeholder='firstName'
-              value={this.state.firstName}
-              onChange={e => this.setState({ firstName: e.target.value })}
-            />
+          {location === '/signup' &&
+          <div>
+            <div className='inputfield'>
+              <input
+                placeholder='firstName'
+                value={this.state.firstName}
+                onChange={e => this.setState({ firstName: e.target.value })}
+              />
+            </div>
+            <div className='inputfield'>
+              <input
+                placeholder='lastName'
+                value={this.state.lastName}
+                onChange={e => this.setState({ lastName: e.target.value })}
+              />
+            </div>
           </div>
-          <div className='inputfield'>
-            <input
-              placeholder='lastName'
-              value={this.state.lastName}
-              onChange={e => this.setState({ lastName: e.target.value })}
-            />
-          </div>
+          }
           <div className='inputfield'>
             <input
               placeholder='email'
