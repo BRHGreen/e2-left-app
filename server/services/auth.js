@@ -26,7 +26,7 @@ passport.deserializeUser((id, done) => {
 // the password might not match the saved one.  In either case, we call the 'done'
 // callback, including a string that messages why the authentication process failed.
 // This string is provided back to the GraphQL client.
-passport.use(new LocalStrategy({ usernameField: 'email' }, (firstName, lastName, email, password, done) => {
+passport.use(new LocalStrategy({ usernameField: 'email' }, ( email, password, done) => {
   User.findOne({ email: email.toLowerCase() }, (err, user) => {
     if (err) { return done(err); }
     if (!user) { return done(null, false, 'Invalid Credentials'); }
@@ -47,8 +47,8 @@ passport.use(new LocalStrategy({ usernameField: 'email' }, (firstName, lastName,
 // Notice the Promise created in the second 'then' statement.  This is done
 // because Passport only supports callbacks, while GraphQL only supports promises
 // for async code!  Awkward!
-function signup({ firstName, lastName, email, password, req }) {
-  const user = new User({ firstName, lastName, email, password });
+function signup({ email, password, req }) {
+  const user = new User({ email, password });
   /*
   put this back in to the if you ever figure out the first/lastName problem:
   !firstName || !lastName ||
