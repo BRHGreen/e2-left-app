@@ -26,6 +26,7 @@ onSubmit (event) {
         <form onSubmit={this.onSubmit.bind(this)} className='col s4'>
           {location === '/signup' &&
           <div>
+            <p>*Remember* you turned off the first/lastName in the UserSchema</p>
             <div className='inputfield'>
               <input
                 placeholder='firstName'

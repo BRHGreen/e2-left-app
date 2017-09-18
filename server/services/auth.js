@@ -26,7 +26,7 @@ passport.deserializeUser((id, done) => {
 // the password might not match the saved one.  In either case, we call the 'done'
 // callback, including a string that messages why the authentication process failed.
 // This string is provided back to the GraphQL client.
-passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
+passport.use(new LocalStrategy({ usernameField: 'email' }, (firstName, lastName, email, password, done) => {
   User.findOne({ email: email.toLowerCase() }, (err, user) => {
     if (err) { return done(err); }
     if (!user) { return done(null, false, 'Invalid Credentials'); }
@@ -49,7 +49,9 @@ passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, don
 // for async code!  Awkward!
 function signup({ firstName, lastName, email, password, req }) {
   const user = new User({ firstName, lastName, email, password });
-  if (!firstName || !lastName || !email || !password) { throw new Error('You must provide an email and password.'); }
+  // put this back in if you ever figure our why the first/lastName thing isn't working:
+  // !firstName || !lastName || 
+  if (!email || !password) { throw new Error('You must provide an email and password.'); }
   return User.findOne({ email })
     .then(existingUser => {
       if (existingUser) { throw new Error('Email in use'); }
