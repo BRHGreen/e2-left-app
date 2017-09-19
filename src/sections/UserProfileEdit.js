@@ -15,10 +15,10 @@ class UserProfileEdit extends Component {
   }
 
   onSubmit(event) {
-    console.log('id: ', this.prop.data.user.id);
+    console.log('id: ', this.props.data.user.id);
     event.preventDefault()
     this.props.mutate({
-      variables: { id: this.props.data.user.id, age: this.state.age },
+      variables: { userId: this.props.data.user.id, age: this.state.age },
       // refetch takes 2 args: the query you want to re-run and the variables. You don't always have to pass in vars, in this case it's not necessary.
       refetchQueries: [{ query: fetchUserProfileQuery }]
     }).then(() => hashHistory.push('/user-profile'))

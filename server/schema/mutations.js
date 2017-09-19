@@ -48,10 +48,10 @@ const mutation = new GraphQLObjectType({
     updateProfile: {
       type: UserProfileType,
       args: {
-        id: { type: new GraphQLNonNull(GraphQLID) },
+        userId: { type: new GraphQLNonNull(GraphQLString) },
         age: { type: GraphQLInt },
         occupation: { type: GraphQLString },
-        loveMeForever: { type: GraphQLString }
+        loveMeForever: { type: GraphQLString },
       },
       resolve(parentValue, args) {
         return (new UserProfile(args)).save()

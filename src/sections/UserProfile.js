@@ -22,7 +22,9 @@ class UserProfile extends Component {
           <i
             className='material-icons'
             onClick={() => this.onProfileDelete(id)}
-            >delete</i>
+            >
+            delete
+          </i>
         </li>
       )
     })

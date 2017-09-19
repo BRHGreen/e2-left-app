@@ -20,6 +20,9 @@ const UserProfileType = new GraphQLObjectType({
     },
     loveMeForever: {
       type: GraphQLString
+    },
+    userId: {
+      type: GraphQLString
     }
   })
 })
