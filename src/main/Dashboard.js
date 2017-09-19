@@ -23,13 +23,15 @@ const events = [
 
 class Dashboard extends Component {
   render () {
-    console.log('dashboard props: ', this.props); 
+    console.log('dashboard props: ', this.props);
     return (
       <div>
+        {!this.props.data.loading &&
         <BigCalendar
           {...this.props}
           events={events}
         />
+      }
       </div>
     )
   }
