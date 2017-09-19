@@ -3,7 +3,8 @@ import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { Link, hashHistory } from 'react-router'
 import fetchUserProfileQuery from '../queries/fetchUserProfile'
-import fetchUser from '../queries/fetchUser'
+// import fetchUser from '../queries/fetchUser'
+import editUser from '../mutations/editUser'
 
 class UserProfileEdit extends Component {
   constructor(props) {
@@ -14,9 +15,10 @@ class UserProfileEdit extends Component {
   }
 
   onSubmit(event) {
+    console.log('id: ', this.prop.data.user.id);
     event.preventDefault()
     this.props.mutate({
-      variables: { age: this.state.age },
+      variables: { id: this.props.data.user.id, age: this.state.age },
       // refetch takes 2 args: the query you want to re-run and the variables. You don't always have to pass in vars, in this case it's not necessary.
       refetchQueries: [{ query: fetchUserProfileQuery }]
     }).then(() => hashHistory.push('/user-profile'))
@@ -43,12 +45,16 @@ class UserProfileEdit extends Component {
 }
 
 // while queries put the data they fetch into the props object, turn up on `this.props.mutate`
-const mutation = gql `
-  mutation UpdateProfile($age: Int){
-    updateProfile(age: $age) {
-      age
-    }
-  }
-`
-
-export default graphql(mutation)(UserProfileEdit)
+// const mutation = gql `
+//   mutation UpdateProfile($age: Int){
+//     updateProfile(age: $age) {
+//       age
+//     }
+//   }
+// `
+export default graphql(editUser)(UserProfileEdit)
+// export default graphql(fetchUser, {
+//     options: (props) => { return { variables: { id: props.params.id }
+//   } }
+// })(UserProfileEdit)
+// export default UserProfileEdit

@@ -1,10 +1,10 @@
 import gql from 'graphql-tag'
 
 export default gql`
-  mutation UpdateProfile($age: Int){
-    updateProfile(age: $age) {
+  mutation UpdateProfile($id: ID!, $age: Int){
+    updateProfile(id: $id, age: $age) {
       age
+      id
     }
   }
-`
 `

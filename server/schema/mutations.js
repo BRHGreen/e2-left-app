@@ -8,7 +8,8 @@ const {
   GraphQLObjectType,
   GraphQLString,
   GraphQLInt,
-  GraphQLID
+  GraphQLID,
+  GraphQLNonNull
 } = graphql;
 
 const mutation = new GraphQLObjectType({
@@ -47,6 +48,7 @@ const mutation = new GraphQLObjectType({
     updateProfile: {
       type: UserProfileType,
       args: {
+        id: { type: new GraphQLNonNull(GraphQLID) },
         age: { type: GraphQLInt },
         occupation: { type: GraphQLString },
         loveMeForever: { type: GraphQLString }
