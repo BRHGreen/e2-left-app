@@ -3,6 +3,7 @@ import gql from 'graphql-tag'
 import { graphql } from 'react-apollo'
 import { Link, hashHistory } from 'react-router'
 import fetchUserProfileQuery from '../queries/fetchUserProfile'
+import fetchUser from '../queries/fetchUser'
 
 class UserProfileEdit extends Component {
   constructor(props) {
