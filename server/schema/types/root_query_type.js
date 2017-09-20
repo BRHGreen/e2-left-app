@@ -8,7 +8,8 @@ const {
    GraphQLObjectType,
    GraphQLID,
    GraphQLNonNull,
-   GraphQLList
+   GraphQLList,
+   GraphQLString
  } = graphql;
 
 const RootQueryType = new GraphQLObjectType({
@@ -34,8 +35,9 @@ const RootQueryType = new GraphQLObjectType({
         return UserProfile.find({})
       }
     },
-    userProfile: {
+    fetchUserProfile: {
       type: UserProfileType,
+      args: { id: { type: new GraphQLNonNull(GraphQLString) } },
       resolve(parentValue, { id, userId }) {
         return UserProfile.findById(id)
       }

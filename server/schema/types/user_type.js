@@ -1,4 +1,6 @@
+const mongoose = require ('mongoose')
 const UserProfileType = require ('./user_profile_type')
+const UserProfile = mongoose.model('userProfile')
 const graphql = require('graphql');
 const {
   GraphQLObjectType,
@@ -23,8 +25,10 @@ const UserType = new GraphQLObjectType({
     },
     userProfile: {
       type: UserProfileType,
-        resolve(parentValue) {
-          console.log('word')
+        resolve(parentValue, args) {
+          console.log('parentValue: ', parentValue);
+          console.log('args: ', args);
+          return UserProfile.findUserProfile(parentValue.id)
         }
     }
   })

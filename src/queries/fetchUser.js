@@ -6,6 +6,9 @@ export default gql`
       id
       firstName
       email
+      userProfile {
+        age
+      }
     }
   }
 `

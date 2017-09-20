@@ -5,6 +5,7 @@ export default gql`
     updateProfile(userId: $userId, age: $age) {
       age
       userId
+      id
     }
   }
 `

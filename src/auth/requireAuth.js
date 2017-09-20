@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
-import CurrentUserQuery from '../queries/CurrentUser'
+import CurrentUser from '../queries/CurrentUser'
 import { hashHistory } from 'react-router'
 
 
 export default (WrappedComponent) => {
   class RequireAuth extends Component {
     componentWillUpdate (nextProps) {
+      console.log('auth props: ', this.props);
       if (!nextProps.data.loading && !nextProps.data.user) {
         hashHistory.push('/login')
       }
@@ -15,5 +16,5 @@ export default (WrappedComponent) => {
       return <WrappedComponent {...this.props} />
     }
   }
-  return graphql(CurrentUserQuery)(RequireAuth)
+  return graphql(CurrentUser)(RequireAuth)
 }
