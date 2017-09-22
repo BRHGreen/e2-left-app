@@ -11,6 +11,8 @@ export default gql`
   userProfiles {
     id
     age
+    occupation
+    loveMeForever
   }
 }
 `

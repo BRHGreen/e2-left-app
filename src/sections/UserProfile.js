@@ -13,22 +13,21 @@ class UserProfile extends Component {
   }
 
   renderProfiles () {
-    return this.props.data.userProfiles.map(({ id, age }, i) => {
-      console.log('profile props: ', this.props);
+    return this.props.data.userProfiles.map((profileFields, i) => {
+      const profileDetails = [
+        'age: ' + profileFields.age,
+        'occupation: ' + profileFields.occupation,
+        'loveMeForever: ' + profileFields.loveMeForever
+      ]
       return (
-        <li
-          key={i}>
-          age: {age}
-          <i
-            className='material-icons'
-            onClick={() => this.onProfileDelete(id)}
-            >
-            delete
-          </i>
-        </li>
+        profileDetails.map((profileField, i) => {
+          return (
+            <li>{profileField}</li>
+          )
+        })
       )
-    })
-  }
+  })
+}
 
   render () {
     const { user, loading } = this.props.data
@@ -42,6 +41,12 @@ class UserProfile extends Component {
           <ul>
             {this.renderProfiles()}
           </ul>
+          <i
+            className='material-icons'
+            onClick={() => this.onProfileDelete(id)}
+            >
+            delete
+          </i>
         </div>
         }
       </div>

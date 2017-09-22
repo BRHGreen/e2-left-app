@@ -25,12 +25,7 @@ const UserType = new GraphQLObjectType({
     },
     userProfile: {
       type: UserProfileType,
-        resolve(parentValue, args) {
-          console.log('parentValue: ', parentValue);
-          console.log('args: ', args);
-          return UserProfile.findUserProfile(parentValue.id)
-        }
-    }
+      }
   })
 })
 module.exports = UserType;
